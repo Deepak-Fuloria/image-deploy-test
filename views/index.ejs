@@ -15,7 +15,7 @@
 
     <% if (allImage) { const host=process.env.HOST || "localhost" ; const port=process.env.PORT || 5000;
         allImage.forEach(image=> {
-        const imagePath = `http://${host}:${port}/images/${image.imageName}`;
+        const imagePath = `../images/${image.imageName}`;
         %>
 
         <img src="<%= imagePath %>" alt="" width="300">
