@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Image Upload</title>
+</head>
+
+<body>
+    <h1>Image Upload</h1>
+
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <button type="submit">Upload</button>
+    </form>
+
+    <% if (allImage) { const host=process.env.HOST || "localhost" ; const port=process.env.PORT || 5000;
+        allImage.forEach(image=> {
+        const imagePath = `http://${host}:${port}/images/${image.imageName}`;
+        %>
+
+        <img src="<%= imagePath %>" alt="" width="300">
+
+        <% }); } %>
+
+</body>
+
+</html>
