@@ -24,16 +24,18 @@ const uploadImage = (req, res) => {
     form.parse(req, async (err, fields, files) => {
 
         var oldpath = files.image[0].filepath;
-        var newpath = path.join(__dirname, '../', 'public', 'images', files.image[0].originalFilename)
+        var newpath = path.join('public', 'images', files.image[0].originalFilename)
 
         fs.rename(oldpath, newpath, function (err) {
             if (err) throw err;
-
             res.end();
         });
-        res.redirect('/')
+
+       
         const test = new Test({ imageName: files.image[0].originalFilename })
         test.save()
+
+        res.redirect('/')
 
     });
 }
